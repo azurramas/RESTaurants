@@ -1,37 +1,30 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+  <v-app id="inspire">
+    <Structure v-if="navigation()" />
     <v-content>
-      <HelloWorld/>
+      <router-view></router-view>
     </v-content>
+    <v-footer color="indigo" app>
+      <span class="white--text"> Team 404 &copy; 2019</span>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Structure from "./components/Structure";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
+  methods: {
+    navigation: function() {
+      if (this.$route.path !== "/") {
+        return true;
+      }
+    }
   },
-  data: () => ({
-    //
-  }),
+  name: "App",
+  components: {
+    Structure
+  },
+  data: () => ({})
 };
 </script>
