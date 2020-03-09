@@ -11,9 +11,20 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <v-list v-else dense>
+        <v-list-item v-for="userLink in userLinks" :key="userLink.text" router :to="userLink.route">
+          <v-list-item-action>
+            <v-icon>{{userLink.icon}}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>{{userLink.text}}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="indigo" dark>
+    <v-app-bar app color="orange darken-4
+" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>REST-aurants</v-toolbar-title>
     </v-app-bar>
@@ -24,13 +35,17 @@
 export default {
   methods: {
     navigation: function() {
-      if (this.$route.path !== '/'){
-        return true
+      if (this.$route.path !== "/") {
+        return true;
       }
     },
     perms: function() {
-      if (this.$route.path === "/restaurant" || this.$route.path === "/reservations" || this.$route.path === "/orders" )
-      return true
+      if (
+        this.$route.path === "/restaurant" ||
+        this.$route.path === "/reservations" ||
+        this.$route.path === "/orders"
+      )
+        return true;
     }
   },
 
@@ -38,10 +53,15 @@ export default {
     drawer: null,
     userLinks: [
       {
-        icon: "restaurant",
-        text: "User",
+        icon: "mdi-format-list-numbered",
+        text: "List of restaurants",
         route: "/user"
         //apiroute: "/restaurants*",
+      },
+      {
+        icon: "mdi-home",
+        text: "Home",
+        route: "/"
       }
     ],
     restLinks: [
@@ -52,9 +72,9 @@ export default {
         //apiroute: "/restaurants*",
       },
       {
-        icon: "mdi-food",
-        text: "Orders",
-        route: "/orders"
+        icon: "mdi-home",
+        text: "Home",
+        route: "/"
         //apiroute: "/restaurants*",
       }
     ]

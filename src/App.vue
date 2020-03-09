@@ -1,22 +1,25 @@
 <template>
   <v-app id="inspire">
+    <div  class="fadeIn" data-wow-delay="0.2s" data-wow-duration="2s" v-wow >
     <Structure v-if="navigation()" />
-    <v-content>
+    <v-content style="min-height: 100vh" class="orange lighten-5">
       <router-view></router-view>
     </v-content>
-    <v-footer color="indigo" app>
-      <span class="white--text"> Team 404 &copy; 2019</span>
+    <v-footer v-if="navigation()" color="orange darken-4" app>
+      <span class="white--text">Team 404 &copy; 2019</span>
     </v-footer>
-  </v-app>
+  
+  </div></v-app>
 </template>
 
 <script>
 import Structure from "./components/Structure";
 
+
 export default {
   methods: {
     navigation: function() {
-      if (this.$route.path !== "/") {
+      if (this.$route.path !== "/" && this.$route.path !== "/login") {
         return true;
       }
     }

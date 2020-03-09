@@ -5,7 +5,6 @@ import Router from "vue-router";
 Vue.use(Router);
 
 const router = new Router({
-  mode: "history",
   routes: [
     {
       path: "/",
@@ -13,42 +12,33 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/Home.vue")
     },
-    // {
-    //   path: "/login",
-    //   name: "login",
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () =>
-    //     import(/* webpackChunkName: "about" */ "./views/Login.vue")
-    // },
+    {
+      path: "/login",
+      name: "login",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Login.vue")
+    },
     {
       path: "/restaurant",
       name: "restaurant",
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/Restaurant.vue")
     },
-    // {
-    //   path: "/reservations",
-    //   name: "reservations",
-    //   component: () =>
-    //     import(/* webpackChunkName: "about" */ "./views/Reservations.vue")
-    // },
-    // {
-    //   path: "/orders",
-    //   name: "orders",
-    //   component: () =>
-    //     import(/* webpackChunkName: "about" */ "./views/Orders.vue")
-    // },
-    // {
-    //   path: "/user",
-    //   name: "user",
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () =>
-    //     import(/* webpackChunkName: "about" */ "./views/User.vue")
-    // }
+    {
+      path: "/reservations",
+      name: "reservations",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Reservations.vue")
+    },
+    {
+      path: "/user",
+      name: "user",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/User.vue")
+    }
   ]
 });
 
